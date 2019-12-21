@@ -9,9 +9,9 @@ var scrape = function(cb){
     // load html body from axios into cheerio
     var $ = cheerio.load(response.data);
     console.log('1111111111111111');
-    console.log($);
+    // console.log($);
     console.log('2222222222222222');
-    var articleArray = [{title:'newtitle', link:'link', body:'body'}];
+    var articleArray = [{headline:'newtitle', link:'link', synopsis:'body'}];
     // for each element with a no-skin class
     $(".no-skin").each(function(i, element) {
       // save the text,href, and body of each link enclosed in the current element
@@ -38,9 +38,9 @@ var scrape = function(cb){
         //   }
         // });
         var articleToAdd = {
-            title: title,
+            headline: title,
             link: link,
-            body: body
+            synopsis: body
         };
         articleArray.push(articleToAdd);
       }

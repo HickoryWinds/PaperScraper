@@ -12,7 +12,7 @@ var app = express();
 var methodOverride = require('method-override')
 app.use(methodOverride('_method'));
 
-// set public folder as static
+// set / folder as static
 app.use(express.static(__dirname + '/'));
 
 //connect handlebars with express app
@@ -59,60 +59,3 @@ var PORT = process.env.PORT || 3500;
 app.listen(PORT, function(){
     console.log('Listening on port: ' + PORT + '!')
 });
-
-
-// //test placement
-// var axios = require('axios');
-// var cheerio = require('cheerio');
-// // create scraping function
-// function scrapeIt() {
-//     //use axios to make http call
-//     axios.get("https://www.washingtonpost.com/").then(function(response) {
-//         console.log('00000000000');
-//         // console.log(response.data);
-//     // load html body from axios into cheerio
-//     var $ = cheerio.load(response.data);
-//     console.log('1111111111111111');
-//     // console.log($);
-//     console.log('2222222222222222');
-//     var articleArray = [{title:'newtitle', link:'link', body:'body'}];
-//     // for each element with a no-skin class
-//     $(".no-skin").each(function(i, element) {
-//       // save the text,href, and body of each link enclosed in the current element
-//       var title = $(element).find("a").text();
-//       var link = $(element).find("a").attr("href");
-//       var body = $(element).find("div").text();
-      
-//       // if found element has both title and link
-//       if (title && link) {
-//         // insert data in the scrapedData db
-//         // db.scrapedData.insert({
-//         //   title: title,
-//         //   link: link,
-//         //   body: body
-//         // },
-//         // function(err, inserted) {
-//         //   if (err) {
-//         //     // log the error if one occurs
-//         //     console.log(err);
-//         //   }
-//         //   else {
-//         //     // if no error log the inserted data
-//         //     console.log(inserted);
-//         //   }
-//         // });
-//         var articleToAdd = {
-//             title: title,
-//             link: link,
-//             body: body
-//         };
-//         articleArray.push(articleToAdd);
-//       }
-//     });
-//     console.log('333333333333');
-//     console.log(articleArray);
-//     // cb(articleArray);
-//   });
-// };
-// console.log('77777777777777777777');
-// scrapeIt();
