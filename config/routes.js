@@ -21,7 +21,7 @@ module.exports = function (router) {
         // console.log(res);
         articlesController.fetch(function (err, docs) {
             res.json({
-                message: 'Added ' + docs.insertedCount + ' new Articles'
+                message: 'Scraped Articles'
             });
 
         });
