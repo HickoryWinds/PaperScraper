@@ -70,7 +70,7 @@ $(document).ready(function () {
             // articleContainer.append('<br>');
             var panel =
                 $([
-                    '<div class="panel panel-default">',
+                    '<div class="panel panel-default panel-article">',
                     '<div class="panel-heading">',
                     '<h3>',
                     articles[i].headline,
@@ -95,6 +95,7 @@ $(document).ready(function () {
             console.log('articles._id');
             console.log(articles[i]._id);
             panel.data('_id', articles[i]._id);
+            panel.addClass(articles._id);
             // append panel to container
             articleContainer.append(panel);
             console.log('article panel');
@@ -153,7 +154,6 @@ $(document).ready(function () {
         noteStructure.data('_id', selectedArticle._id)
         console.log(noteStructure);
         $(this).parents('.panel').append(noteStructure);
-        // clearPage();
     }
     // function addNotes adds a note to the article via the associate button
     function displayNotes(notes) {
@@ -184,6 +184,15 @@ $(document).ready(function () {
             console.log(panel);
             noteContainer.append(panel);
             $(this).parents('.panel').append(panel);
+            var classId = "'." + notes[j]._articleId + "'";
+            var search = classId.toString();
+            console.log(search);
+            for (k = 0; k < 5; k++)
+            if ($('.panel-article').data() == ('_id=' + notes[j]._articleId)) {
+                console.log('found it');
+            }
+            else console.log('not here');
+            // $(search).append(panel);
         }
     }
 
@@ -207,10 +216,6 @@ $(document).ready(function () {
         }
         clearPage();
     }
-
-    // function deleteNotes(){
-    //     console.log('deleting note');
-    // }
-
+    // initial call to display contents of database
     clearPage();
 });

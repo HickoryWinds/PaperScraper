@@ -13,30 +13,20 @@ var scrape = function(cb){
     console.log('2222222222222222');
     var articleArray = [{headline:'newtitle', link:'link', synopsis:'body'}];
     // for each element with a no-skin class
-    $(".no-skin").each(function(i, element) {
+    // $(".no-skin").each(function(i, element) {
+    //   // save the text,href, and body of each link enclosed in the current element
+    //   var title = $(element).find("a").text();
+    //   var link = $(element).find("a").attr("href");
+    //   var body = $(element).find("div").text();
+    $(".headline").each(function(i, element) {
       // save the text,href, and body of each link enclosed in the current element
-      var title = $(element).find("a").text();
-      var link = $(element).find("a").attr("href");
-      var body = $(element).find("div").text();
+      var title = $(element).children("a").text();
+      var link = $(element).children("a").attr("href");
+      var body = $(element).siblings(".blurb").text();
       
-      // if found element has both title and link
-      if (title && link) {
-        // insert data in the scrapedData db
-        // db.scrapedData.insert({
-        //   title: title,
-        //   link: link,
-        //   body: body
-        // },
-        // function(err, inserted) {
-        //   if (err) {
-        //     // log the error if one occurs
-        //     console.log(err);
-        //   }
-        //   else {
-        //     // if no error log the inserted data
-        //     console.log(inserted);
-        //   }
-        // });
+      // if found element has both title, link and body
+      if (title && link &&  body) {
+       
         var articleToAdd = {
             headline: title,
             link: link,
