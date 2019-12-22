@@ -18,3 +18,7 @@ h1 {
 #article-container {
     background-color: blueviolet;
 }
+
+#note-container {
+    background-color: rgb(172, 141, 202);
+}

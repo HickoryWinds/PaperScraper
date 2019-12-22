@@ -37,6 +37,16 @@ module.exports = function (router) {
             res.json(data);
         });
     });
+    //route to get notedata to display from database
+    router.get('/api/notes', function (req, res) {
+        var query = {};
+        if (req.query.saved) {
+            query = req.query;
+        }
+        notesController.get(query, function (data) {
+            res.json(data);
+        });
+    });
 
     //route to delete specific article
 
@@ -72,7 +82,7 @@ module.exports = function (router) {
     });
  
     // route to delete note
-    router.delete('/api/notes/:id', function(req, res){
+    router.delete('/api/notes?:id', function(req, res){
         var query = {};
         query._id = req.params.id;
         notesController.delete(query, function(err, data){

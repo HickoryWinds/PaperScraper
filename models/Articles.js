@@ -8,7 +8,7 @@ var articleSchema = new Schema({
     headline: {
         type: String,
         required: true,
-        unique: true
+        unique: { index: { unique: true }}
     },
     synopsis: {
         type: String,

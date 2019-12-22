@@ -2,17 +2,25 @@
 var Notes = require('../models/Notes');
 
 module.exports = {
-    // deletes notr being queried
-    delete: function (data, cb) {
-        Notes.remove({
-            _id: data_id
-        }, cb);
+    // deletes note being queried
+    // delete: function (data, cb) {
+    //     Notes.remove({
+    //         _id: data_id
+    //     }, cb);
+    // },
+     // deletes note being queried
+     delete: function (query, cb) {
+        Notes.remove(query, cb);
     },
     // get note for article queried
-    get: function (data, cb) {
-        Notes.find({
-            _articleId: data._id
-        }, cb);
+    // get: function (data, cb) {
+    //     Notes.find({
+    //         _articleId: data._id
+    //     }, cb);
+    // },
+    // get articles queried and sort so most recent on top
+    get: function (query, cb) {
+        Notes.find(query).sort({ _id: -1 }).exec(function (err, doc) {cb(doc)});
     },
     // save note
     save: function(data, cb){
