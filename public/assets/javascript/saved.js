@@ -88,8 +88,9 @@ $(document).ready(function () {
                     '<br>',
                     articles[i].synopsis,
                     '</div>',
-                    '</div>',
-                    '<br>'
+                    '<hr>',
+                    '</div>'
+                    // '<br>'
                 ].join(''));
             console.log('articles._id');
             console.log(articles[i]._id);
