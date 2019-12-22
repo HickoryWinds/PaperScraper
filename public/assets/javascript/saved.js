@@ -63,11 +63,6 @@ $(document).ready(function () {
         console.log(articles);
         console.log(articles.length);
         for (var i = 0; i < articles.length; i++) {
-            // articleContainer.append('<p>' + articles[i].headline + '</p>');
-            // articleContainer.append('<p>' + articles[i].link + '</p>');
-            // articleContainer.append('<p>' + articles[i].synopsis + '</p>');
-            // articleContainer.append('<a class="btn btn-success save">"Save Article"</a>');
-            // articleContainer.append('<br>');
             var panel =
                 $([
                     '<div class="panel panel-default panel-article">',
@@ -84,13 +79,14 @@ $(document).ready(function () {
                     '<h3>',
                     '</div>',
                     '<div class="panel-body">',
-                    articles[i].link,
+                    '<h5>',
+                    '<a href="' + articles[i].link.toString() + '" target="blank">Link to Article</a>',
                     '<br>',
                     articles[i].synopsis,
+                    '</h5>',
                     '</div>',
                     '<hr>',
                     '</div>'
-                    // '<br>'
                 ].join(''));
             console.log('articles._id');
             console.log(articles[i]._id);
@@ -140,7 +136,7 @@ $(document).ready(function () {
         var noteStructure = $([
 
             '<div class="container-fluid text-center">',
-            '<h4>Notes for Article: ',
+            '<h4 class="note-head">Notes for Article: ',
             selectedArticle._id,
             '</h4>',
             '<hr>',
@@ -148,7 +144,6 @@ $(document).ready(function () {
             '</ul>',
             '<textarea placeholder="New Note" rows="4" cols="60"></textarea>',
             '<button class="btn btn-success note-save">Save Note</button>',
-            // '<button class="btn btn-danger note-delete">Delete Note</button>',
             '</div>'
         ].join(''));
         noteStructure.data('_id', selectedArticle._id)
@@ -173,11 +168,14 @@ $(document).ready(function () {
                 notes[j]._articleId,
                 '<br>',
                 '</h4>',
-                notes[j].noteText,
-                '<br>',
+                '</div>',
+                '<div class="panel-body">',
                 '<button class="btn btn-danger note-delete">Delete Note</button>',
+                '<h5>',
+                notes[j].noteText,
+                '</h5>',
                 '<hr>',
-                '</div>'
+                '</div>',
             ].join(''));
             panel.data('_id', notes[j]._id);
             console.log('note panel');

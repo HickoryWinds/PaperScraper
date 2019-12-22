@@ -11,7 +11,6 @@ $(document).ready(function(){
         console.log('clicked');
         $.get('/api/fetch').then(function(data){
             clearPage();
-            // bootbox.alert('<h3 class="text-center" m-top-80>' + data.message + '</h3>')
         });
     }
     // function clearPage empties div displays article in database
@@ -36,11 +35,6 @@ $(document).ready(function(){
         console.log(articles);
         console.log(articles.length);
         for (var i = 0; i < articles.length; i++){
-            // articleContainer.append('<p>' + articles[i].headline + '</p>');
-            // articleContainer.append('<p>' + articles[i].link + '</p>');
-            // articleContainer.append('<p>' + articles[i].synopsis + '</p>');
-            // articleContainer.append('<a class="btn btn-success save">"Save Article"</a>');
-            // articleContainer.append('<br>');
             var panel = 
             $([
                 '<div class="panel panel-default">',
@@ -48,18 +42,20 @@ $(document).ready(function(){
                 '<h3>',
                 articles[i].headline,
                 '<br>',
-                '<a class="btn btn-success save">',
+                '<a class="btn btn-info save">',
                 'Save Article',
                 '</a>',
                 '<h3>',
                 '</div>',
                 '<div class="panel-body">',
-                articles[i].link,
+                '<h5>',
+                '<a href="' + articles[i].link.toString() + '" target="blank">Link to Article</a>',
                 '<br>',
                 articles[i].synopsis,
+                '</h5>',
+                '<hr>',
                 '</div>',
                 '</div>',
-                '<br>'
             ].join(''));
             console.log('articles._id');
             console.log(articles[i]._id);

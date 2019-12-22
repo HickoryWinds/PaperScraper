@@ -5,13 +5,49 @@ body{
 
 h1 {
     color: white;
-    text-align: center;
+    text-align: left;
+}
+
+button {
+    margin-left: 60px;
+}
+
+hr {
+    border: 3px solid yellow;
 }
 
 /* style classes */
+.panel-heading, .note-head {
+    background-color: pink;
+}
+
+.btn-success {
+    vertical-align: top;
+}
+
+.btn-danger, .btn-info {
+    float: right;
+    margin-top: 20px;
+    /* border-top: 20px; */
+}
+
+.nav-button {
+    float: right;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navigate {
+    text-align: center;
+}
+
+.note-delete {
+    margin-top: 0px;
+}
 
 /* style ids */
 #banner {
+    width: 100%;
     background-color: aqua;
 }
 
@@ -22,3 +58,8 @@ h1 {
 #note-container {
     background-color: rgb(172, 141, 202);
 }
+
+#scrape {
+    background-color: brown;
+}
+
