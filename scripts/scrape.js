@@ -11,7 +11,8 @@ var scrape = function(cb){
     console.log('1111111111111111');
     // console.log($);
     console.log('2222222222222222');
-    var articleArray = [{headline:'newtitle', link:'link', synopsis:'body'}];
+    // var articleArray = [{headline:'newtitle', link:'link', synopsis:'body'}];
+    var articleArray = [];
     // for each element with a no-skin class
     // $(".no-skin").each(function(i, element) {
     //   // save the text,href, and body of each link enclosed in the current element

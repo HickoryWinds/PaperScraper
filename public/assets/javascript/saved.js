@@ -42,21 +42,21 @@ $(document).ready(function () {
                 }
             })
     }
-    function clearNotes() {
-        console.log('clearing notes');
-        noteContainer.empty();
-        $.get('/api/notes')
-            .then(function (data) {
-                console.log('in the note');
-                console.log(data);
-                if (data && data.length) {
-                    displayNotes(data);
-                }
-                else {
-                    console.log('Empty');
-                }
-            })
-    }
+    // function clearNotes() {
+    //     console.log('clearing notes');
+    //     noteContainer.empty();
+    //     $.get('/api/notes')
+    //         .then(function (data) {
+    //             console.log('in the note');
+    //             console.log(data);
+    //             if (data && data.length) {
+    //                 displayNotes(data);
+    //             }
+    //             else {
+    //                 console.log('Empty');
+    //             }
+    //         })
+    // }
 
     function displaySavedArticles(articles) {
         console.log('ready to display');
@@ -147,7 +147,7 @@ $(document).ready(function () {
             '</div>'
         ].join(''));
         noteStructure.data('_id', selectedArticle._id)
-        console.log(noteStructure);
+        // console.log(noteStructure);
         $(this).parents('.panel').append(noteStructure);
     }
     // function addNotes adds a note to the article via the associate button
@@ -207,7 +207,7 @@ $(document).ready(function () {
                 _id: $(this).parents('.panel').data()._id,
                 noteBody: noteText
             };
-            console.log(noteData)
+            // console.log(noteData)
             $.post('api/notes', noteData).then(function () {
                 console.log('note saved');
             })

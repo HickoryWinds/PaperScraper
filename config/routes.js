@@ -48,8 +48,19 @@ module.exports = function (router) {
         });
     });
 
-    //route to delete specific article
-
+    
+    //route to delete all unsaved articles
+    router.delete('/api/articles/saved=false', function (req, res) {
+        console.log('routes.js');
+        // console.log(req);
+        var query = {};
+        query.saved = 'false';
+        articlesController.delete(query, function (err, data) {
+            res.json(data);
+        });
+    });
+    
+    //route to delete specific article id
     router.delete('/api/articles?:id', function (req, res) {
         var query = {};
         query._id = req.params.id;
@@ -60,7 +71,6 @@ module.exports = function (router) {
 
     // route to update article if needed
     router.patch('/api/articles', function(req,res){
-        console.log('routes.js');
         // console.log(req);
         // console.log(res);
         articlesController.update(req.body, function(err, data){
@@ -73,10 +83,10 @@ module.exports = function (router) {
     // route to post new note
     router.post('/api/notes', function(req, res){
         console.log('adding note');
-        console.log(req.body);
+        // console.log(req.body);
         notesController.save(req.body, function(data){
             console.log('should be the same');
-            console.log(data);
+            // console.log(data);
             res.json(data);
         });
     });

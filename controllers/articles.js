@@ -23,6 +23,9 @@ module.exports = {
     },
     // deletes article being queried
     delete: function (query, cb) {
+        console.log('article controller query');
+        // console.log(query);
+        // Articles.remove(query, cb);
         Articles.remove(query, cb);
     },
     // get articles queried and sort so most recent on top

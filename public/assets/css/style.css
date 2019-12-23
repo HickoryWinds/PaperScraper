@@ -8,9 +8,9 @@ h1 {
     text-align: left;
 }
 
-button {
+/* button {
     margin-left: 60px;
-}
+} */
 
 hr {
     border: 3px solid yellow;
@@ -61,5 +61,20 @@ hr {
 
 #scrape {
     background-color: brown;
+    color: white;
+    text-align: center;
+    float: left
+}
+
+#delete {
+    background-color:red;
+    color:white;
+    text-align: center;
+    float: right
+}
+
+#label {
+    color: purple;
+    float: center
 }
 

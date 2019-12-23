@@ -4,6 +4,8 @@ $(document).ready(function(){
     var articleContainer = $('#article-container');
     // action for button to scrape articles
     $(document).on('click', '#scrape', scrapeArticles);
+    // action for button to delete unsaved articles
+    $(document).on('click', '#delete', deleteAllArticles);
     // action for buttons to save articles
     $(document).on('click', '.btn.save', saveNotes);
 
@@ -65,6 +67,23 @@ $(document).ready(function(){
             articleContainer.append('<br>');
     }
 }
+
+// function to delete all unsaved articles
+function deleteAllArticles() {
+    console.log('deleting all articles');
+    $.ajax({
+        method: 'DELETE',
+        url: '/api/articles/saved=false',
+        data: 'saved'
+    }).then(function (data) {
+        console.log('data');
+        console.log(data);
+        if (data.ok) {
+            clearPage();
+        }
+    });
+}
+
 // saveNotes save changes the state of saved in database for the article clicked on
 function saveNotes(){
     console.log('started to save note');

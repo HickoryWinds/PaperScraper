@@ -10,6 +10,10 @@
 
 ![picture](/public/assets/images/scraped.png)
 
+#### When the 'Delete All' button is clicked, all the unsaved articles displayed on the index page are deleted from the database. The page is then refreshed.
+
+![picture](/public/assets/images/delete-all.png)
+
 #### When the 'Save Article' button is clicked, its status in the database is changed to that it will display on the saved article page. The saved articles page can be accessed by clicking on the 'Saved Articles' link.
 
 ![picture](/public/assets/images/save-it.png)

@@ -24,21 +24,21 @@ module.exports = {
     },
     // save note
     save: function(data, cb){
-        console.log('controller');
-        console.log(data);
+        // console.log('controller');
+        // console.log(data);
         
         var newNote = {
             _articleId: data._id,
             noteText: data.noteBody
         };
-        console.log('controller');
-        console.log(newNote);
+        // console.log('controller');
+        // console.log(newNote);
         Notes.create(newNote, function (err, doc){
             if (err){
                 console.log(err);
             }
             else {
-                console.log(doc);
+                // console.log(doc);
                 cb(doc);
             }
         });
