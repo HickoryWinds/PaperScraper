@@ -26,7 +26,7 @@
 
 ![picture](/public/assets/images/add-note.png)
 
-#### When the save note button is clicked, the note is saved to the database and the page is refreshed to show the new note. The notes are collected at the top of the saved page so that the user does not need to search the page to find a note.
+#### When the save note button is clicked, the note is saved to the database and the page is refreshed to show the new note. The notes are appended to the article so that the user does not need to search the page to find a note.
 
 ![picture](/public/assets/images/note-added.png)
 
@@ -34,7 +34,7 @@
 
 ![picture](/public/assets/images/note-deleted.png)
 
-#### If the user want to delete an article, the 'Delete Article' button can be clicked. The article will be deleted and the page refreshed.
+#### If the user want to delete an article, the 'Delete Article' button can be clicked. The article and its associated notes will be deleted and the page refreshed.
 
 ![picture](/public/assets/images/article-deleted.png)
 

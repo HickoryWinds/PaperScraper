@@ -65,6 +65,7 @@ $(document).ready(function () {
         for (var i = 0; i < articles.length; i++) {
             var panel =
                 $([
+                    '<br>',
                     '<div class="panel panel-default panel-article">',
                     '<div class="panel-heading">',
                     '<h3>',
@@ -85,13 +86,14 @@ $(document).ready(function () {
                     articles[i].synopsis,
                     '</h5>',
                     '</div>',
+                    '<p>Article Number: ' + articles[i]._id + '</p>' ,
                     '<hr>',
                     '</div>'
                 ].join(''));
             console.log('articles._id');
-            console.log(articles[i]._id);
+            // console.log(articles[i]._id);
             panel.data('_id', articles[i]._id);
-            panel.addClass(articles._id);
+            panel.addClass(articles[i]._id.toString());
             // append panel to container
             articleContainer.append(panel);
             console.log('article panel');
@@ -134,7 +136,6 @@ $(document).ready(function () {
         var selectedArticle = $(this).parents('.panel').data();
         // construct note entry
         var noteStructure = $([
-
             '<div class="container-fluid text-center">',
             '<h4 class="note-head">Notes for Article: ',
             selectedArticle._id,
@@ -153,15 +154,16 @@ $(document).ready(function () {
     // function addNotes adds a note to the article via the associate button
     function displayNotes(notes) {
         console.log('displaying notes');
-        console.log(notes[0]._id);
-        console.log(notes[0]._articleId);
-        console.log(notes[0].noteText);
+        // console.log(notes[0]._id);
+        // console.log(notes[0]._articleId);
+        // console.log(notes[0].noteText);
         // var selectedArticle = $(this).parents('.panel').data();
         // console.log($(this).parents('.panel'));
         for (j = 0; j < notes.length; j++) {
 
             // construct display
             var panel = $([
+                '<br>',
                 '<div class="panel panel-default">',
                 '<div class="panel-heading">',
                 '<h4>Notes for Article: ',
@@ -180,17 +182,16 @@ $(document).ready(function () {
             panel.data('_id', notes[j]._id);
             console.log('note panel');
             console.log(panel);
-            noteContainer.append(panel);
-            $(this).parents('.panel').append(panel);
+            // noteContainer.append(panel);
             var classId = "'." + notes[j]._articleId + "'";
-            var search = classId.toString();
-            console.log(search);
-            for (k = 0; k < 5; k++)
-            if ($('.panel-article').data() == ('_id=' + notes[j]._articleId)) {
-                console.log('found it');
-            }
-            else console.log('not here');
-            // $(search).append(panel);
+            // var search = classId.toString();
+            // $(classId).insertAfter(panel);
+            // $(panel).insertAfter('.5e004787442ad31cc471ed00');
+            $('.' + notes[j]._articleId).append(panel);
+            // console.log('panel');
+            // console.log('classId');
+            // console.log(classId);
+            // console.log($('.' + notes[j]._articleId).append(panel));
         }
     }
 
