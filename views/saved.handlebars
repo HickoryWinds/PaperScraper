@@ -11,12 +11,13 @@
             </h1>
         </div>
     </div>
-
-    <div class='row'>
+    {{!-- div to hold notes --}}
+    {{!-- <div class='row'>
         <div id='note-container' class='col-12'>
             <h3>Waiting for Godata</h3>
         </div>
-    </div>
+    </div> --}}
+    {{!-- div to hold articles and appended notes --}}
     <div class='row'>
         <div id='article-container' class='col-12'>
             <h3>Waiting for Godata</h3>
@@ -24,22 +25,6 @@
     </div>
 </div>
 
-
-{{!-- display articles --}}
-{{!-- <div class='col-10'>
-        <ul>
-            <li>
-                {{#each articles}}
-                {{#unless this.saved}}
-                    {{this.title}}
-                    {{this.link}}
-                    {{this.body}}
-                {{/unless}}
-                {{/each}}
-            </li>
-        </ul>
-
-    </div> --}}
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>

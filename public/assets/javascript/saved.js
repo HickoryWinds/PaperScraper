@@ -13,14 +13,11 @@ $(document).ready(function () {
     // action for button to add notes
     $(document).on('click', '.btn.note-delete', deleteNotes);
 
-    // function clearPage empties div displays article in database
+    // function clearPage empties div then displays articles and notes in database
     function clearPage() {
-        console.log('clearing the page');
         articleContainer.empty();
         $.get('/api/articles?saved=true')
             .then(function (data) {
-                console.log('in the saved page');
-                console.log(data);
                 if (data && data.length) {
                     displaySavedArticles(data);
                 }
@@ -28,12 +25,9 @@ $(document).ready(function () {
                     console.log('Empty');
                 }
             });
-        console.log('clearing notes');
-        noteContainer.empty();
+        // noteContainer.empty();
         $.get('/api/notes')
             .then(function (data) {
-                console.log('in the note');
-                console.log(data);
                 if (data && data.length) {
                     displayNotes(data);
                 }
@@ -42,26 +36,10 @@ $(document).ready(function () {
                 }
             })
     }
-    // function clearNotes() {
-    //     console.log('clearing notes');
-    //     noteContainer.empty();
-    //     $.get('/api/notes')
-    //         .then(function (data) {
-    //             console.log('in the note');
-    //             console.log(data);
-    //             if (data && data.length) {
-    //                 displayNotes(data);
-    //             }
-    //             else {
-    //                 console.log('Empty');
-    //             }
-    //         })
-    // }
-
+    
+    // function displaySavedArticles displays the articles with a saved state of true
+    // to the saved articles page
     function displaySavedArticles(articles) {
-        console.log('ready to display');
-        console.log(articles);
-        console.log(articles.length);
         for (var i = 0; i < articles.length; i++) {
             var panel =
                 $([
@@ -90,22 +68,18 @@ $(document).ready(function () {
                     '<hr>',
                     '</div>'
                 ].join(''));
-            console.log('articles._id');
-            // console.log(articles[i]._id);
+            // add data to panel for saving notes and displaying them
             panel.data('_id', articles[i]._id);
             panel.addClass(articles[i]._id.toString());
             // append panel to container
             articleContainer.append(panel);
-            console.log('article panel');
-            console.log(panel);
             articleContainer.append('<br>');
         }
     }
     // function to delete article associated with a button
     function deleteArticles() {
-        console.log('deleting article');
+        // get id from article panel
         var toBeDeleted = $(this).parents('.panel').data();
-        console.log(toBeDeleted);
         $.ajax({
             method: 'DELETE',
             url: '/api/articles' + toBeDeleted._id
@@ -115,11 +89,10 @@ $(document).ready(function () {
             }
         });
     }
-    // function to delete article associated with a button
+    // function to delete note associated with a button
     function deleteNotes() {
-        console.log('deleting note');
+        // get note id from panel div
         var toBeDeleted = $(this).parents('.panel').data();;
-        console.log(toBeDeleted);
         $.ajax({
             method: 'DELETE',
             url: '/api/notes' + toBeDeleted._id
@@ -132,7 +105,7 @@ $(document).ready(function () {
 
     // function addNotes adds a note to the article via the associate button
     function addNotes() {
-        console.log('adding notes');
+        // get id for article div
         var selectedArticle = $(this).parents('.panel').data();
         // construct note entry
         var noteStructure = $([
@@ -147,18 +120,12 @@ $(document).ready(function () {
             '<button class="btn btn-success note-save">Save Note</button>',
             '</div>'
         ].join(''));
-        noteStructure.data('_id', selectedArticle._id)
-        // console.log(noteStructure);
+        noteStructure.data('_id', selectedArticle._id);
+        // append entry form to article
         $(this).parents('.panel').append(noteStructure);
     }
     // function addNotes adds a note to the article via the associate button
     function displayNotes(notes) {
-        console.log('displaying notes');
-        // console.log(notes[0]._id);
-        // console.log(notes[0]._articleId);
-        // console.log(notes[0].noteText);
-        // var selectedArticle = $(this).parents('.panel').data();
-        // console.log($(this).parents('.panel'));
         for (j = 0; j < notes.length; j++) {
 
             // construct display
@@ -179,38 +146,25 @@ $(document).ready(function () {
                 '<hr>',
                 '</div>',
             ].join(''));
+            // add id to note div so it can be used to delete note
             panel.data('_id', notes[j]._id);
-            console.log('note panel');
-            console.log(panel);
-            // noteContainer.append(panel);
-            var classId = "'." + notes[j]._articleId + "'";
-            // var search = classId.toString();
-            // $(classId).insertAfter(panel);
-            // $(panel).insertAfter('.5e004787442ad31cc471ed00');
+            // append note to associated article panel; note structure of selector
             $('.' + notes[j]._articleId).append(panel);
-            // console.log('panel');
-            // console.log('classId');
-            // console.log(classId);
-            // console.log($('.' + notes[j]._articleId).append(panel));
         }
     }
 
     function saveNotes() {
-        console.log('saving note');
         // variable to send data to database
         var noteData;
         // get note text from text area
         var noteText = $('textarea').val().trim();
-        console.log(noteText);
         // if noteText exists post to database
         if (noteText) {
             noteData = {
                 _id: $(this).parents('.panel').data()._id,
                 noteBody: noteText
             };
-            // console.log(noteData)
             $.post('api/notes', noteData).then(function () {
-                console.log('note saved');
             })
         }
         clearPage();

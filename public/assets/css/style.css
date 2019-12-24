@@ -8,10 +8,6 @@ h1 {
     text-align: left;
 }
 
-/* button {
-    margin-left: 60px;
-} */
-
 hr {
     border: 3px solid yellow;
 }
@@ -28,7 +24,6 @@ hr {
 .btn-danger, .btn-info {
     float: right;
     margin-top: 20px;
-    /* border-top: 20px; */
 }
 
 .nav-button {

@@ -3,7 +3,7 @@ var Articles = require('../models/Articles');
 //require files from /scripts folder
 var scrape = require('../scripts/scrape');
 
-
+// make module available for use elsewhere
 module.exports = {
     // gathers all articles that are scraped
     fetch: function (cb) {
@@ -12,20 +12,14 @@ module.exports = {
             for (var i = 0; i < articles.length; i++) {
                 articles[i].saved = false;
             }
+            // save scraped articles to database
             Articles.collection.insertMany(articles, {ordered: false}, function(err, docs){
-                // console.log(articles);
-                console.log('44444444444444');
-                // console.log(docs);
-                console.log('5555555555555555');
                 cb(err, docs)
             });
         });
     },
     // deletes article being queried
     delete: function (query, cb) {
-        console.log('article controller query');
-        // console.log(query);
-        // Articles.remove(query, cb);
         Articles.remove(query, cb);
     },
     // get articles queried and sort so most recent on top
@@ -40,4 +34,3 @@ module.exports = {
             }, {}, cb);
     }
 }
-console.log('3 controller');

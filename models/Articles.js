@@ -8,6 +8,7 @@ var articleSchema = new Schema({
     headline: {
         type: String,
         required: true,
+        // unique prevents duplicate entries
         unique: { index: { unique: true }}
     },
     synopsis: {
@@ -20,6 +21,6 @@ var articleSchema = new Schema({
     }
 });
 
+// make available for use elsewhere
 var Article = mongoose.model('Article', articleSchema);
-console.log('1 Model')
 module.exports = Article;

@@ -49,9 +49,6 @@ var router = express.Router();
 require('./config/routes')(router);
 // have all requests pass through router middleware
 app.use(router);
-// var routes = require('./config/routes')(router);
-// app.use('/', routes)
-console.log('4 server');
 
 // set port to one designated by host or localhost:3500
 var PORT = process.env.PORT || 3500;

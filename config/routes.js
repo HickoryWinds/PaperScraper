@@ -1,9 +1,10 @@
 // require scrape function
 var scrape = require('../scripts/scrape')
-// require controllers
+// require controllers for articles and notes
 var articlesController = require('../controllers/articles')
 var notesController = require('../controllers/notes')
 
+// make module available for use elsewhere
 module.exports = function (router) {
     // route to render index page
     router.get('/', function (req, res) {
@@ -17,8 +18,6 @@ module.exports = function (router) {
 
     //route to scrape articles
     router.get('/api/fetch', function (req, res) {
-        console.log('66666666666');
-        // console.log(res);
         articlesController.fetch(function (err, docs) {
             res.json({
                 message: 'Scraped Articles'
@@ -51,8 +50,6 @@ module.exports = function (router) {
     
     //route to delete all unsaved articles
     router.delete('/api/articles/saved=false', function (req, res) {
-        console.log('routes.js');
-        // console.log(req);
         var query = {};
         query.saved = 'false';
         articlesController.delete(query, function (err, data) {
@@ -71,22 +68,14 @@ module.exports = function (router) {
 
     // route to update article if needed
     router.patch('/api/articles', function(req,res){
-        // console.log(req);
-        // console.log(res);
         articlesController.update(req.body, function(err, data){
-            console.log('routes.js');
-            // console.log(data);
             res.json(data);
         });        
     });
 
     // route to post new note
     router.post('/api/notes', function(req, res){
-        console.log('adding note');
-        // console.log(req.body);
         notesController.save(req.body, function(data){
-            console.log('should be the same');
-            // console.log(data);
             res.json(data);
         });
     });
